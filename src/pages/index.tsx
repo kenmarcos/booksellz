@@ -1,9 +1,9 @@
-import * as M from "@mui/material";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
-      <M.Typography variant="h1">Home BookSellz</M.Typography>
+      <Header />
     </>
   );
 }

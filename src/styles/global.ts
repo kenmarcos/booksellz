@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: #f7f6f3;
         color: ${({ theme }) => theme.palette.text.primary};
+        font-family: ${({ theme }) => theme.typography.fontFamily};
     }
 
     h1, h2, h3, h4 {

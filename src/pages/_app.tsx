@@ -13,6 +13,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <MuiThemeProvider theme={muiTheme}>
         <GlobalStyle />
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
           <title>BookSellz</title>
         </Head>
         <Component {...pageProps} />
