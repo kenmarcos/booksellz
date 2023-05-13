@@ -1178,6 +1178,13 @@
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.13.0.tgz#cb2c732165f60533862707d9bcedfab8e6c0ff48"
   integrity sha512-5nXz2k8Rv2ZjtQY6kXirJVyn2+ODaQuAJmXSJtLDUQDKWp3PFUj6j3bILqR0JGOs9R5ejgwz3crLKsl6GwjwkQ==
 
+"@mui/icons-material@^5.11.16":
+  version "5.11.16"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.11.16.tgz#417fa773c56672e39d6ccfed9ac55591985f0d38"
+  integrity sha512-oKkx9z9Kwg40NtcIajF9uOXhxiyTZrrm9nmIJ4UjkU2IdHpd4QVLbCc/5hZN/y0C6qzi2Zlxyr9TGddQx2vx2A==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+
 "@mui/material@^5.13.0":
   version "5.13.0"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.13.0.tgz#23c63a9d117dca22b81bb82db6e9c4d761c8fbf1"
@@ -2088,7 +2095,7 @@ streamsearch@^1.1.0:
   resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-1.1.0.tgz#404dd1e2247ca94af554e841a8ef0eaa238da764"
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
-styled-components@^6.0.0-rc.1:
+styled-components@^6, styled-components@^6.0.0-rc.1:
   version "6.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.0.0-rc.1.tgz#e7d7c9f8301df7e4877c1c6a1c02bfbd7f64bc07"
   integrity sha512-v+VqSeqCQboUqSxTxIW/wmBYB0BGDBV30tTMWcUaicapSy0VYNmZanOcFCxyfbViY/Bk2h+VKURMytx2jaTrwA==

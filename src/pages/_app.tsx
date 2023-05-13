@@ -6,6 +6,7 @@ import { ThemeProvider as MuiThemeProvider } from "@mui/material";
 
 import GlobalStyle from "@/styles/global";
 import muiTheme from "@/styles/muiTheme";
+import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,9 +14,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <MuiThemeProvider theme={muiTheme}>
         <GlobalStyle />
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
           <title>BookSellz</title>
         </Head>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </MuiThemeProvider>
     </StyledThemeProvider>
   );
