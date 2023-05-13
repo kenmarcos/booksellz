@@ -7,7 +7,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
 import * as S from "./styles";
-import StyledLink from "../StyledLink";
+import StyledLink from "../../../StyledLink";
 import logoFooter from "/public/logo-variation.svg";
 
 const institutionalLinks = [

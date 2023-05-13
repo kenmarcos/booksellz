@@ -15,8 +15,7 @@ export const Wrapper = styled(M.Box)`
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing(8)};
 
-    @media screen and (width >= ${({ theme }) =>
-        theme.breakpoints.values.md}px) {
+    @media screen and (width >= 900px) {
       flex-direction: row;
       gap: unset;
     }

@@ -8,7 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import logo from "/public/logo.svg";
 import * as S from "./styles";
-import StyledLink from "../StyledLink";
+import StyledLink from "../../../StyledLink";
 
 const Header = () => {
   return (
