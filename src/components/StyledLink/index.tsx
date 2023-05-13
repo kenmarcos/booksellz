@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
+import { LinkProps } from "next/link";
 
 import * as S from "./styles";
-import { LinkProps } from "next/link";
 
 export interface StyledLinkProps extends LinkProps {
   children: ReactNode;

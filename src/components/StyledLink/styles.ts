@@ -1,5 +1,7 @@
 import Link from "next/link";
+
 import styled from "styled-components";
+
 import { StyledLinkProps } from ".";
 
 export const NextLink = styled(Link)<Omit<StyledLinkProps, "children">>`
