@@ -26,15 +26,15 @@ const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
           />
           <M.Divider />
 
-          <M.CardContent>
-            <M.Typography gutterBottom variant="body1" noWrap>
+          <S.CardContent>
+            <M.Typography gutterBottom variant="body1">
               {title}
             </M.Typography>
 
             <M.Typography variant="h4" color="text.primary">
               {price}
             </M.Typography>
-          </M.CardContent>
+          </S.CardContent>
         </Link>
       </M.CardActionArea>
 
