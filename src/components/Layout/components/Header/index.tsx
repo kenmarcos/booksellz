@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import * as M from "@mui/material";
@@ -15,7 +16,9 @@ const Header = () => {
     <M.AppBar>
       <M.Container>
         <S.Toolbar>
-          <Image priority src={logo} width={200} alt="booksellz logo" />
+          <Link href="/">
+            <Image priority src={logo} width={200} alt="booksellz logo" />
+          </Link>
 
           <S.Search>
             <S.InputBase
@@ -34,7 +37,7 @@ const Header = () => {
               Account
             </StyledLink>
 
-            <StyledLink href="#" color="secondary">
+            <StyledLink href="/cart" color="secondary">
               <ShoppingCartOutlinedIcon />
               Cart
             </StyledLink>
