@@ -1,12 +1,18 @@
+import Link from "next/link";
+import Image from "next/image";
+
 import * as M from "@mui/material";
-import { Navigation, Scrollbar } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/scrollbar";
+import "swiper/css/pagination";
 
 import * as S from "./styles";
 import BookCard from "@/components/BookCard";
+import bannerBook from "/public/images/banner-book.png";
+import bannerReleases from "/public/images/banner-releases.png";
+import bannerDiscount from "/public/images/banner-discount.png";
 
 const books = [
   {
@@ -79,16 +85,41 @@ const books = [
 export default function Home() {
   return (
     <S.Wrapper>
+      <S.MainCarousel>
+        <Swiper
+          navigation
+          modules={[Navigation, Pagination, Autoplay]}
+          slidesPerView={1}
+          autoplay
+          pagination={{
+            dynamicBullets: true,
+            clickable: true,
+          }}
+        >
+          <SwiperSlide>
+            <Image src={bannerDiscount} alt="banner discount" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link href="/books/releases">
+              <Image src={bannerReleases} alt="banner releases" />
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link href="/books/Data-Visualization-with-Python-and-JavaScript-2nd-Edition/9781098111878">
+              <Image src={bannerBook} alt="banner book" />
+            </Link>
+          </SwiperSlide>
+        </Swiper>
+      </S.MainCarousel>
+
       <S.CardCarousel component="section">
         <M.Typography variant="h3">New Releases</M.Typography>
 
         <Swiper
           navigation
-          modules={[Navigation, Scrollbar]}
+          modules={[Navigation]}
           spaceBetween={16}
           slidesPerView={1.5}
-          // onSlideChange={() => console.log("slide change")}
-          // onSwiper={(swiper) => console.log(swiper)}
           breakpoints={{
             600: {
               slidesPerView: 3.5,
