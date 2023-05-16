@@ -49,6 +49,10 @@ const muiTheme = createTheme({
       fontSize: "1.25rem",
       fontWeight: "bold",
     },
+    h5: {
+      fontSize: "1rem",
+      fontWeight: "bold",
+    },
     button: {
       fontWeight: "bold",
     },
