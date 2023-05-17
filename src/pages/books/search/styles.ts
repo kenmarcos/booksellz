@@ -10,4 +10,10 @@ export const BooksSection = styled(M.Box)`
   .MuiTypography-h5 {
     margin-bottom: ${({ theme }) => theme.spacing(3)};
   }
+
+  .MuiPagination-root {
+    display: flex;
+    justify-content: center;
+    margin-top: ${({ theme }) => theme.spacing(4)};
+  }
 `;

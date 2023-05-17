@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import * as M from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -10,8 +11,29 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logo from "/public/logo.svg";
 import * as S from "./styles";
 import StyledLink from "../../../StyledLink";
+import { FormEvent, useRef } from "react";
 
 const Header = () => {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const searchValue = searchInputRef.current?.value;
+
+    if (searchValue) {
+      router.push({
+        pathname: "/books/search",
+        query: { keyword: searchValue },
+      });
+
+      const formElement = event.target as HTMLFormElement;
+      formElement.reset();
+      searchInputRef.current.blur();
+    }
+  };
+
   return (
     <M.AppBar>
       <M.Container>
@@ -20,16 +42,17 @@ const Header = () => {
             <Image priority src={logo} width={200} alt="booksellz logo" />
           </Link>
 
-          <S.Search>
+          <S.SearchForm onSubmit={handleSubmit}>
             <S.InputBase
+              inputRef={searchInputRef}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
 
-            <M.Button>
+            <M.Button type="submit">
               <SearchIcon />
             </M.Button>
-          </S.Search>
+          </S.SearchForm>
 
           <S.Navigation>
             <StyledLink href="#" color="secondary">
