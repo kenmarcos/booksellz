@@ -24,3 +24,10 @@ export interface BookDetails {
   image: string;
   url: string;
 }
+
+export interface SearchResultData {
+  error: string;
+  total: string;
+  page: string;
+  books: Book[];
+}
