@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { GetStaticProps } from "next";
 
 import * as M from "@mui/material";
 import { Autoplay, Navigation, Pagination } from "swiper";
@@ -13,7 +14,6 @@ import BookCard from "@/components/BookCard";
 import bannerBook from "/public/images/banner-book.png";
 import bannerReleases from "/public/images/banner-releases.png";
 import bannerDiscount from "/public/images/banner-discount.png";
-import { GetStaticProps } from "next";
 import { api } from "@/services/api";
 import { Book } from "@/types/books";
 import StyledLink from "@/components/StyledLink";
