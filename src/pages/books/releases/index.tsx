@@ -1,7 +1,10 @@
+import Image from "next/image";
+
 import * as M from "@mui/material";
 
 import * as S from "./styles";
 import BookCard from "@/components/BookCard";
+import bannerReleases from "/public/images/banner-releases.png";
 
 const books = [
   {
@@ -175,7 +178,11 @@ const books = [
 const Releases = () => {
   return (
     <S.Wrapper>
-      <S.BooksSection>
+      <S.Banner>
+        <Image src={bannerReleases} alt="banner releases" />
+      </S.Banner>
+
+      <M.Box>
         <M.Grid container spacing={2}>
           {books.map((book) => (
             <M.Grid key={book.isbn13} item xs={12} sm={6} md={3}>
@@ -188,7 +195,7 @@ const Releases = () => {
             </M.Grid>
           ))}
         </M.Grid>
-      </S.BooksSection>
+      </M.Box>
     </S.Wrapper>
   );
 };
