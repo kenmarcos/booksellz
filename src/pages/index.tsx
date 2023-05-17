@@ -13,76 +13,16 @@ import BookCard from "@/components/BookCard";
 import bannerBook from "/public/images/banner-book.png";
 import bannerReleases from "/public/images/banner-releases.png";
 import bannerDiscount from "/public/images/banner-discount.png";
+import { GetStaticProps } from "next";
+import { api } from "@/services/api";
+import { Book } from "@/types/books";
+import StyledLink from "@/components/StyledLink";
 
-const books = [
-  {
-    title: "Snowflake: The Definitive Guide",
-    subtitle:
-      "Architecting, Designing, and Deploying on the Snowflake Data Cloud",
-    isbn13: "9781098103828",
-    price: "$58.90",
-    image: "https://itbook.store/img/books/9781098103828.png",
-    url: "https://itbook.store/books/9781098103828",
-  },
-  {
-    title: "Python for Data Analysis, 3rd Edition",
-    subtitle: "Data Wrangling with pandas, NumPy, and Jupyter",
-    isbn13: "9781098104030",
-    price: "$37.49",
-    image: "https://itbook.store/img/books/9781098104030.png",
-    url: "https://itbook.store/books/9781098104030",
-  },
-  {
-    title: "Reliable Machine Learning",
-    subtitle: "Applying SRE Principles to ML in Production",
-    isbn13: "9781098106225",
-    price: "$43.99",
-    image: "https://itbook.store/img/books/9781098106225.png",
-    url: "https://itbook.store/books/9781098106225",
-  },
-  {
-    title: "Data Visualization with Python and JavaScript, 2nd Edition",
-    subtitle: "Scrape, Clean, Explore, and Transform Your Data",
-    isbn13: "9781098111878",
-    price: "$60.99",
-    image: "https://itbook.store/img/books/9781098111878.png",
-    url: "https://itbook.store/books/9781098111878",
-  },
-  {
-    title: "Learning Microsoft Power BI",
-    subtitle: "Transforming Data into Insights",
-    isbn13: "9781098112844",
-    price: "$41.99",
-    image: "https://itbook.store/img/books/9781098112844.png",
-    url: "https://itbook.store/books/9781098112844",
-  },
-  {
-    title: "C++ Software Design",
-    subtitle: "Design Principles and Patterns for High-Quality Software",
-    isbn13: "9781098113162",
-    price: "$43.99",
-    image: "https://itbook.store/img/books/9781098113162.png",
-    url: "https://itbook.store/books/9781098113162",
-  },
-  {
-    title: "Terraform: Up and Running, 3rd Edition",
-    subtitle: "Writing Infrastructure as Code",
-    isbn13: "9781098116743",
-    price: "$46.99",
-    image: "https://itbook.store/img/books/9781098116743.png",
-    url: "https://itbook.store/books/9781098116743",
-  },
-  {
-    title: "Flutter and Dart Cookbook",
-    subtitle: "Developing Full-Stack Applications for the Cloud",
-    isbn13: "9781098119515",
-    price: "$50.52",
-    image: "https://itbook.store/img/books/9781098119515.png",
-    url: "https://itbook.store/books/9781098119515",
-  },
-];
+interface HomeProps {
+  bookReleases: Book[];
+}
 
-export default function Home() {
+export default function Home({ bookReleases }: HomeProps) {
   return (
     <S.Wrapper>
       <S.MainCarousel>
@@ -113,7 +53,10 @@ export default function Home() {
       </S.MainCarousel>
 
       <S.CardCarousel component="section">
-        <M.Typography variant="h3">New Releases</M.Typography>
+        <M.Box>
+          <M.Typography variant="h3">New Releases</M.Typography>
+          <StyledLink href="books/releases">View all</StyledLink>
+        </M.Box>
 
         <Swiper
           navigation
@@ -129,7 +72,7 @@ export default function Home() {
             },
           }}
         >
-          {books.map((book) => (
+          {bookReleases.map((book) => (
             <SwiperSlide key={book.isbn13}>
               <BookCard
                 isbn13={book.isbn13}
@@ -144,3 +87,18 @@ export default function Home() {
     </S.Wrapper>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await api.get("/new");
+
+  const data = response.data.books;
+
+  const bookReleases = data.slice(0, 8);
+
+  return {
+    props: {
+      bookReleases,
+    },
+    revalidate: 60 * 60 * 24 * 5,
+  };
+};

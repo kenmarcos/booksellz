@@ -6,8 +6,10 @@ export const Wrapper = styled(M.Box)`
 `;
 
 export const CardCarousel = styled(M.Box)`
-  .MuiTypography-h3 {
+  .MuiBox-root {
     margin-bottom: ${({ theme }) => theme.spacing(3)};
+    display: flex;
+    justify-content: space-between;
   }
 
   .swiper-wrapper {
