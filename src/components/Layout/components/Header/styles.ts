@@ -12,7 +12,7 @@ export const Toolbar = styled(M.Toolbar)`
   }
 `;
 
-export const Search = styled("div")`
+export const SearchForm = styled.form`
   display: flex;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.palette.common.white};
