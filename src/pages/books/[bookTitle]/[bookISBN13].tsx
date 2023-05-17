@@ -83,8 +83,6 @@ const BookDetails = ({ bookDetails }: BookDetailsProps) => {
   );
 };
 
-export default BookDetails;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const bookISBN13 = context.params?.bookISBN13;
 
@@ -98,3 +96,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+
+export default BookDetails;
