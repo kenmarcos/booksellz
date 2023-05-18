@@ -3,46 +3,51 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 import * as S from "./styles";
 import CartItem from "@/components/CartItem";
+import { useAppSelector } from "@/store/hooks";
 
-const cartItems = [
-  {
-    book: {
-      title: "MongoDB Notes for Professionals",
-      subtitle: "",
-      isbn13: "1001650286196",
-      price: "$20.00",
-      image: "https://itbook.store/img/books/1001650286196.png",
-      url: "https://itbook.store/books/1001650286196",
-    },
-    quantity: 3,
-  },
+// const cartItems = [
+//   {
+//     book: {
+//       title: "MongoDB Notes for Professionals",
+//       subtitle: "",
+//       isbn13: "1001650286196",
+//       price: "$20.00",
+//       image: "https://itbook.store/img/books/1001650286196.png",
+//       url: "https://itbook.store/books/1001650286196",
+//     },
+//     quantity: 3,
+//   },
 
-  {
-    book: {
-      title: "Node.js, MongoDB and Angular Web Development, 2nd Edition",
-      subtitle:
-        "The definitive guide to using the MEAN stack to build web applications",
-      isbn13: "9780134655536",
-      price: "$33.16",
-      image: "https://itbook.store/img/books/9780134655536.png",
-      url: "https://itbook.store/books/9780134655536",
-    },
-    quantity: 1,
-  },
-  {
-    book: {
-      title: "The Definitive Guide to MongoDB",
-      subtitle: "The NoSQL Database for Cloud and Desktop Computing",
-      isbn13: "9781430230519",
-      price: "$39.99",
-      image: "https://itbook.store/img/books/9781430230519.png",
-      url: "https://itbook.store/books/9781430230519",
-    },
-    quantity: 2,
-  },
-];
+//   {
+//     book: {
+//       title: "Node.js, MongoDB and Angular Web Development, 2nd Edition",
+//       subtitle:
+//         "The definitive guide to using the MEAN stack to build web applications",
+//       isbn13: "9780134655536",
+//       price: "$33.16",
+//       image: "https://itbook.store/img/books/9780134655536.png",
+//       url: "https://itbook.store/books/9780134655536",
+//     },
+//     quantity: 1,
+//   },
+//   {
+//     book: {
+//       title: "The Definitive Guide to MongoDB",
+//       subtitle: "The NoSQL Database for Cloud and Desktop Computing",
+//       isbn13: "9781430230519",
+//       price: "$39.99",
+//       image: "https://itbook.store/img/books/9781430230519.png",
+//       url: "https://itbook.store/books/9781430230519",
+//     },
+//     quantity: 2,
+//   },
+// ];
 
 const Cart = () => {
+  const cartItems = useAppSelector((store) => store.cart);
+
+  // console.log(cartItems);
+
   return (
     <S.Wrapper>
       <S.ShoppingCart>
@@ -52,7 +57,7 @@ const Cart = () => {
 
           <M.Stack divider={<M.Divider />}>
             {cartItems.map((cartItem) => (
-              <CartItem key={cartItem.book.isbn13} {...cartItem} />
+              <CartItem key={cartItem.book.isbn13} cartItem={cartItem} />
             ))}
           </M.Stack>
         </M.Paper>

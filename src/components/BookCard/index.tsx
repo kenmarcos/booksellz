@@ -3,6 +3,9 @@ import Link from "next/link";
 import * as M from "@mui/material";
 
 import * as S from "./styles";
+import { useAppDispatch } from "@/store/hooks";
+import { addToCart } from "@/store/slices/cartSlice";
+import { CartItem } from "@/types/cart";
 
 interface BookCardProps {
   isbn13: string;
@@ -12,7 +15,24 @@ interface BookCardProps {
 }
 
 const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
+  const dispatch = useAppDispatch();
+
   const titleSlug = title.replace(/,/g, "").replace(/ /g, "-");
+
+  const handleAddToCart = () => {
+    const item: CartItem = {
+      book: {
+        image,
+        isbn13,
+        price,
+        title,
+      },
+      quantity: 1,
+      totalPrice: 1 * parseFloat(price.slice(1)),
+    };
+
+    dispatch(addToCart(item));
+  };
 
   return (
     <M.Card>
@@ -43,7 +63,7 @@ const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
           Buy Now
         </M.Button>
 
-        <M.Button fullWidth variant="outlined">
+        <M.Button fullWidth variant="outlined" onClick={handleAddToCart}>
           Add To Cart
         </M.Button>
       </S.CardActions>

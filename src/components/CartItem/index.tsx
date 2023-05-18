@@ -4,34 +4,28 @@ import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
 import * as S from "./styles";
+import { CartItem } from "@/types/cart";
 
 interface CartItemProps {
-  book: {
-    title: string;
-    subtitle?: string;
-    isbn13?: string;
-    price: string;
-    image: string;
-    url?: string;
-  };
-  quantity: number;
+  cartItem: CartItem;
 }
 
-const CartItem = ({ book, quantity }: CartItemProps) => {
-  const totalPrice = Number(book.price.replace("$", "")) * quantity;
+const CartItem = ({ cartItem }: CartItemProps) => {
+  const totalPrice =
+    Number(cartItem.book.price.replace("$", "")) * cartItem.quantity;
 
   return (
     <S.Wrapper>
       <M.CardMedia
         component="img"
         sx={{ width: 120 }}
-        image={book.image}
-        alt={book.title}
+        image={cartItem.book.image}
+        alt={cartItem.book.title}
       />
 
       <S.Content>
         <M.Box>
-          <M.Typography variant="h4">{book.title}</M.Typography>
+          <M.Typography variant="h4">{cartItem.book.title}</M.Typography>
         </M.Box>
 
         <S.Quantity>
@@ -39,7 +33,7 @@ const CartItem = ({ book, quantity }: CartItemProps) => {
             <RemoveOutlinedIcon />
           </M.IconButton>
 
-          <M.Box component="span">50</M.Box>
+          <M.Box component="span">{cartItem.quantity}</M.Box>
 
           <M.IconButton size="small">
             <AddOutlinedIcon />
