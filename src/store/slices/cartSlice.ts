@@ -22,9 +22,16 @@ const cartSlice = createSlice({
         state.push(action.payload);
       }
     },
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      const newCart = state.filter(
+        (item) => item.book.isbn13 !== action.payload
+      );
+
+      return newCart;
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

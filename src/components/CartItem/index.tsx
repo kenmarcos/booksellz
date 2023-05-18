@@ -5,14 +5,22 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
 import * as S from "./styles";
 import { CartItem } from "@/types/cart";
+import { useAppDispatch } from "@/store/hooks";
+import { removeFromCart } from "@/store/slices/cartSlice";
 
 interface CartItemProps {
   cartItem: CartItem;
 }
 
 const CartItem = ({ cartItem }: CartItemProps) => {
+  const dispatch = useAppDispatch();
+
   const totalPrice =
     Number(cartItem.book.price.replace("$", "")) * cartItem.quantity;
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(cartItem.book.isbn13));
+  };
 
   return (
     <S.Wrapper>
@@ -47,7 +55,11 @@ const CartItem = ({ cartItem }: CartItemProps) => {
         </M.Box>
 
         <M.Box>
-          <M.IconButton edge="start" color="inherit">
+          <M.IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleRemoveFromCart}
+          >
             <DeleteForeverOutlinedIcon fontSize="large" />
           </M.IconButton>
         </M.Box>

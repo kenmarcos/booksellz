@@ -44,9 +44,9 @@ import { useAppSelector } from "@/store/hooks";
 // ];
 
 const Cart = () => {
-  const cartItems = useAppSelector((store) => store.cart);
+  const cart = useAppSelector((store) => store.cart);
 
-  // console.log(cartItems);
+  console.log(cart);
 
   return (
     <S.Wrapper>
@@ -56,7 +56,7 @@ const Cart = () => {
           <M.Divider />
 
           <M.Stack divider={<M.Divider />}>
-            {cartItems.map((cartItem) => (
+            {cart.map((cartItem) => (
               <CartItem key={cartItem.book.isbn13} cartItem={cartItem} />
             ))}
           </M.Stack>

@@ -28,7 +28,7 @@ const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
         title,
       },
       quantity: 1,
-      totalPrice: 1 * parseFloat(price.slice(1)),
+      totalPrice: parseFloat(price.slice(1)),
     };
 
     dispatch(addToCart(item));
