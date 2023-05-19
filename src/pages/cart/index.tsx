@@ -1,10 +1,14 @@
+import Link from "next/link";
+
 import * as M from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
 
 import * as S from "./styles";
 import CartItem from "@/components/CartItem";
 import { useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatting";
+import NoContentMessage from "@/components/NoContentMessage";
 
 const Cart = () => {
   const cart = useAppSelector((store) => store.cart);
@@ -27,7 +31,18 @@ const Cart = () => {
           <M.Typography variant="h2">Shopping Cart</M.Typography>
           <M.Divider />
 
-          {!cart.cartItems.length && <M.Typography>Empty</M.Typography>}
+          {!cart.cartItems.length && (
+            <NoContentMessage
+              icon={<ProductionQuantityLimitsOutlinedIcon />}
+              mainMessage="Your Cart is Empty"
+              subMessage="Looks like you haven't added anything to your cart yet"
+              button={
+                <M.Button LinkComponent={Link} href="/" variant="contained">
+                  Return to Shop
+                </M.Button>
+              }
+            />
+          )}
 
           {!!cart.cartItems.length && (
             <M.Stack divider={<M.Divider />}>
@@ -39,14 +54,12 @@ const Cart = () => {
         </M.Paper>
       </S.ShoppingCart>
 
-      <S.Order>
-        <M.Paper>
-          <M.Typography variant="h2">Order Summary</M.Typography>
-          <M.Divider />
+      {!!cart.cartItems.length && (
+        <S.Order>
+          <M.Paper>
+            <M.Typography variant="h2">Order Summary</M.Typography>
+            <M.Divider />
 
-          {!cart.cartItems.length && <M.Typography>Empty</M.Typography>}
-
-          {!!cart.cartItems.length && (
             <S.OrderContent spacing={3}>
               <S.OrderData>
                 <M.Typography variant="h5" component="span">
@@ -105,9 +118,9 @@ const Cart = () => {
                 Checkout
               </M.Button>
             </S.OrderContent>
-          )}
-        </M.Paper>
-      </S.Order>
+          </M.Paper>
+        </S.Order>
+      )}
     </S.Wrapper>
   );
 };
