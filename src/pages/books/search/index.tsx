@@ -16,9 +16,9 @@ interface SearchProps {
 const Search = ({ searchResultData }: SearchProps) => {
   const router = useRouter();
   const keyword = router.query.keyword;
-  const totalPages = Math.ceil(parseInt(searchResultData.total) / 10);
+  const totalPages = Math.ceil(Number(searchResultData.total) / 10);
   const currentPage = router.query.page
-    ? parseInt(router.query.page as string)
+    ? Number(router.query.page as string)
     : 1;
 
   const handleChangePage = (event: ChangeEvent<unknown>, page: number) => {
@@ -27,8 +27,6 @@ const Search = ({ searchResultData }: SearchProps) => {
       query: { keyword, page },
     });
   };
-
-  console.log(currentPage);
 
   return (
     <S.Wrapper>

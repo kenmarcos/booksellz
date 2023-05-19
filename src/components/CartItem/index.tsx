@@ -6,7 +6,12 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import * as S from "./styles";
 import { CartItem } from "@/types/cart";
 import { useAppDispatch } from "@/store/hooks";
-import { removeFromCart } from "@/store/slices/cartSlice";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "@/store/slices/cartSlice";
+import { formatPrice } from "@/utils/formatting";
 
 interface CartItemProps {
   cartItem: CartItem;
@@ -15,11 +20,18 @@ interface CartItemProps {
 const CartItem = ({ cartItem }: CartItemProps) => {
   const dispatch = useAppDispatch();
 
-  const totalPrice =
-    Number(cartItem.book.price.replace("$", "")) * cartItem.quantity;
+  const totalPrice = Number(cartItem.book.price.slice(1)) * cartItem.quantity;
 
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(cartItem.book.isbn13));
+  };
+
+  const handleIncreaseQuantity = () => {
+    dispatch(increaseQuantity(cartItem.book.isbn13));
+  };
+
+  const handleDecreaseQuantity = () => {
+    dispatch(decreaseQuantity(cartItem.book.isbn13));
   };
 
   return (
@@ -37,20 +49,20 @@ const CartItem = ({ cartItem }: CartItemProps) => {
         </M.Box>
 
         <S.Quantity>
-          <M.IconButton size="small">
+          <M.IconButton size="small" onClick={handleDecreaseQuantity}>
             <RemoveOutlinedIcon />
           </M.IconButton>
 
           <M.Box component="span">{cartItem.quantity}</M.Box>
 
-          <M.IconButton size="small">
+          <M.IconButton size="small" onClick={handleIncreaseQuantity}>
             <AddOutlinedIcon />
           </M.IconButton>
         </S.Quantity>
 
         <M.Box>
           <M.Typography component="span" fontSize="1.25rem">
-            ${totalPrice}
+            {formatPrice(totalPrice)}
           </M.Typography>
         </M.Box>
 

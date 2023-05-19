@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import * as M from "@mui/material";
 
@@ -15,23 +16,30 @@ interface BookCardProps {
 }
 
 const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const titleSlug = title.replace(/,/g, "").replace(/ /g, "-");
 
-  const handleAddToCart = () => {
-    const item: CartItem = {
-      book: {
-        image,
-        isbn13,
-        price,
-        title,
-      },
-      quantity: 1,
-      totalPrice: parseFloat(price.slice(1)),
-    };
+  const item: CartItem = {
+    book: {
+      image,
+      isbn13,
+      price,
+      title,
+    },
+    quantity: 1,
+    totalPrice: Number(price.slice(1)),
+  };
 
+  const handleAddToCart = () => {
     dispatch(addToCart(item));
+  };
+
+  const handleBuy = () => {
+    dispatch(addToCart(item));
+
+    router.push("/cart");
   };
 
   return (
@@ -59,7 +67,7 @@ const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
       </M.CardActionArea>
 
       <S.CardActions>
-        <M.Button fullWidth variant="contained">
+        <M.Button fullWidth variant="contained" onClick={handleBuy}>
           Buy Now
         </M.Button>
 

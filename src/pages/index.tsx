@@ -26,7 +26,6 @@ interface HomeProps {
 export default function Home({ bookReleases }: HomeProps) {
   const cart = useAppSelector((store) => store.cart);
 
-  console.log(cart);
   return (
     <S.Wrapper>
       <S.MainCarousel>
