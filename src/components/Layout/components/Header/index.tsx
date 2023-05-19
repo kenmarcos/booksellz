@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { FormEvent, useRef, useState } from "react";
 
 import * as M from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -11,11 +12,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logo from "/public/logo.svg";
 import * as S from "./styles";
 import StyledLink from "../../../StyledLink";
-import { FormEvent, useRef } from "react";
 import { useAppSelector } from "@/store/hooks";
 
 const Header = () => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const cart = useAppSelector((store) => store.cart);
@@ -75,9 +76,38 @@ const Header = () => {
               edge="start"
               color="inherit"
               aria-label="open drawer"
+              onClick={() => setOpen(true)}
             >
               <MenuIcon />
             </M.IconButton>
+
+            <S.Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+              <M.Box>
+                <M.List>
+                  <M.ListItem>
+                    <M.ListItemButton>
+                      <M.ListItemIcon>
+                        <AccountBoxIcon />
+                      </M.ListItemIcon>
+                      <M.ListItemText primary="Account" />
+                    </M.ListItemButton>
+                  </M.ListItem>
+
+                  <M.ListItem>
+                    <M.ListItemButton
+                      LinkComponent={Link}
+                      href="/cart"
+                      onClick={() => setOpen(false)}
+                    >
+                      <M.ListItemIcon>
+                        <ShoppingCartOutlinedIcon />
+                      </M.ListItemIcon>
+                      <M.ListItemText primary="Cart" />
+                    </M.ListItemButton>
+                  </M.ListItem>
+                </M.List>
+              </M.Box>
+            </S.Drawer>
           </S.Navigation>
         </S.Toolbar>
       </M.Container>
