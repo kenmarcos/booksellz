@@ -49,6 +49,10 @@ export const Quantity = styled(M.Box)`
     border: 1px solid ${({ theme }) => theme.palette.text.primary};
   }
 
+  button:disabled {
+    border-color: ${({ theme }) => theme.palette.text.secondary};
+  }
+
   .MuiBox-root {
     display: inline-block;
     padding: 0 8px;

@@ -100,7 +100,9 @@ const Header = () => {
                       onClick={() => setOpen(false)}
                     >
                       <M.ListItemIcon>
-                        <ShoppingCartOutlinedIcon />
+                        <M.Badge badgeContent={cart.totalItems} color="primary">
+                          <ShoppingCartOutlinedIcon />
+                        </M.Badge>
                       </M.ListItemIcon>
                       <M.ListItemText primary="Cart" />
                     </M.ListItemButton>

@@ -105,9 +105,9 @@ const cartSlice = createSlice({
         existingItem.totalPrice -= Number(existingItem.book.price.slice(1));
 
         state.subtotal -= Number(existingItem.book.price.slice(1));
-      }
 
-      state.totalItems--;
+        state.totalItems--;
+      }
 
       state.discount = calculateDiscount(state.distinctItems, state.subtotal);
 
