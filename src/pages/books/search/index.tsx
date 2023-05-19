@@ -71,7 +71,6 @@ const Search = ({ searchResultData }: SearchProps) => {
             <M.Pagination
               count={totalPages}
               shape="rounded"
-              variant="outlined"
               page={currentPage}
               onChange={handleChangePage}
               siblingCount={1}
