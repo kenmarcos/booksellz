@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import * as M from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -6,11 +7,14 @@ import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/Production
 
 import * as S from "./styles";
 import CartItem from "@/components/CartItem";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatting";
 import NoContentMessage from "@/components/NoContentMessage";
+import { resetCart } from "@/store/slices/cartSlice";
 
 const Cart = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
   const cart = useAppSelector((store) => store.cart);
 
   let tooltipText = "";
@@ -23,6 +27,12 @@ const Cart = () => {
   } else if (cart.distinctItems >= 5) {
     tooltipText = "25% OFF";
   }
+
+  const handleCheckout = () => {
+    dispatch(resetCart());
+
+    router.push("/order/confirmation");
+  };
 
   return (
     <S.Wrapper>
@@ -114,7 +124,11 @@ const Cart = () => {
                 </M.Typography>
               </S.OrderData>
 
-              <M.Button variant="contained" size="large">
+              <M.Button
+                onClick={handleCheckout}
+                variant="contained"
+                size="large"
+              >
                 Checkout
               </M.Button>
             </S.OrderContent>
