@@ -1,38 +1,118 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- CABEÇALHO -->
+<div id="readme-top" align="center">
+    <h1>
+        <img width=300 src="/public/logo.svg" alt="project-name" />
+    </h1>
+    <p>
+        Your Online Bookstore!
+    </p>
+    <p>
+        <a href="#%EF%B8%8F-about-the-project">About the project</a> •
+        <a href="#-features">Features</a> •
+        <a href="#-layout">Layout</a> •
+        <a href="#%EF%B8%8F-installation">Installation</a> •
+        <a href="#%EF%B8%8F-technologies">Technologies</a> •
+        <a href="#-author">Author</a>
+    </p>
+</div>
 
-## Getting Started
+<!-- SOBRE O PROJETO -->
 
-First, run the development server:
+## 🖥️ About the Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+<div align="center">
+    <img src="/public/images/home.png" width=800/>
+    <br/>
+    <br/>
+    <a href="http://marcos-kuribayashi.vercel.app/">
+        <img src="https://img.shields.io/badge/demo-view%20app-blue?style=for-the-badge" alt="badge-usage" >
+    </a>
+</div>
+
+<br/>
+
+BookSellz is an online bookstore that aims to provide book lovers with a seamless and enjoyable shopping experience.
+
+Our user-friendly interface allows you to easily explore, discover, and purchase your favorite books from the comfort of your home.
+
+## 💡 Features
+
+- [x] Book search
+- [x] Home Screen
+  - [x] Carousel featuring new book releases
+- [x] Search results screen for books
+  - [x] Listing of found books
+- [x] Shopping cart screen
+  - [x] Shopping cart items listing
+  - [x] Addition/Removal of items
+  - [x] Total price calculation
+  - [x] Calculations of potential discounts
+
+## 🎨 Layout
+
+<p align="center">
+  <img src="/public/images/search.png" width=500>
+
+  <img src="/public/images/cart.png" width=500>
+</p>
+
+## ⚙️ Installation
+
+- Fork this repository
+
+- Open the terminal and clone the repository:
+
+```Bash
+$ git clone git@github.com:<your_user>/<booksellz>.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Navigate to the project directory:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```Bash
+$ cd <project-name>
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Add the .env.local file to the root of the project with the following content:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+NEXT_PUBLIC_API_URL=https://api.itbook.store/1.0
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Install the dependencies:
 
-## Learn More
+```Bash
+$ yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+- Run the application:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```Bash
+$ yarn dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Done! The application can now be accessed at the following route: https://localhost:3000/.
 
-## Deploy on Vercel
+## 🛠️ Technologies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para o desenvolvimento desse projeto, as seguintes ferramentas foram utilizadas:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **[React.js](https://pt-br.reactjs.org/)**
+- **[Next.js](https://nextjs.org/)**
+- **[TypeScript](https://www.typescriptlang.org/)**
+- **[Styled Components](https://styled-components.com/)**
+- **[Material UI](https://mui.com/)**
+- **[Redux Toolkit](https://redux-toolkit.js.org/)**
+- **[Axios](https://axios-http.com/)**
+- **[Swiper](https://swiperjs.com/)**
+
+## 👨‍💻 Author
+
+<img style="border-radius: 15%;" src="https://gitlab.com/uploads/-/system/user/avatar/8603970/avatar.png?width=400" width=70 alt="author-profile-picture"/>
+
+Marcos Kenji Kuribayashi
+
+[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/marcos-kuribayashi/) [![Gmail Badge](https://img.shields.io/badge/-marcosken13@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:marcosken13@gmail.com)
+
+---
+
+Desenvolvido por Marcos Kenji Kuribayashi 😉
