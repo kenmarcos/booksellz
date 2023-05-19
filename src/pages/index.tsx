@@ -17,12 +17,15 @@ import bannerDiscount from "/public/images/banner-discount.png";
 import { api } from "@/services/api";
 import { Book } from "@/types/books";
 import StyledLink from "@/components/StyledLink";
+import { useAppSelector } from "@/store/hooks";
 
 interface HomeProps {
   bookReleases: Book[];
 }
 
 export default function Home({ bookReleases }: HomeProps) {
+  const cart = useAppSelector((store) => store.cart);
+
   return (
     <S.Wrapper>
       <S.MainCarousel>

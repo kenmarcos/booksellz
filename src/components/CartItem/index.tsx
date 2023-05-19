@@ -4,56 +4,74 @@ import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
 import * as S from "./styles";
+import { CartItem } from "@/types/cart";
+import { useAppDispatch } from "@/store/hooks";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "@/store/slices/cartSlice";
+import { formatPrice } from "@/utils/formatting";
 
 interface CartItemProps {
-  book: {
-    title: string;
-    subtitle?: string;
-    isbn13?: string;
-    price: string;
-    image: string;
-    url?: string;
-  };
-  quantity: number;
+  cartItem: CartItem;
 }
 
-const CartItem = ({ book, quantity }: CartItemProps) => {
-  const totalPrice = Number(book.price.replace("$", "")) * quantity;
+const CartItem = ({ cartItem }: CartItemProps) => {
+  const dispatch = useAppDispatch();
+
+  const totalPrice = Number(cartItem.book.price.slice(1)) * cartItem.quantity;
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(cartItem.book.isbn13));
+  };
+
+  const handleIncreaseQuantity = () => {
+    dispatch(increaseQuantity(cartItem.book.isbn13));
+  };
+
+  const handleDecreaseQuantity = () => {
+    dispatch(decreaseQuantity(cartItem.book.isbn13));
+  };
 
   return (
     <S.Wrapper>
       <M.CardMedia
         component="img"
         sx={{ width: 120 }}
-        image={book.image}
-        alt={book.title}
+        image={cartItem.book.image}
+        alt={cartItem.book.title}
       />
 
       <S.Content>
         <M.Box>
-          <M.Typography variant="h4">{book.title}</M.Typography>
+          <M.Typography variant="h4">{cartItem.book.title}</M.Typography>
         </M.Box>
 
         <S.Quantity>
-          <M.IconButton size="small">
+          <M.IconButton size="small" onClick={handleDecreaseQuantity}>
             <RemoveOutlinedIcon />
           </M.IconButton>
 
-          <M.Box component="span">50</M.Box>
+          <M.Box component="span">{cartItem.quantity}</M.Box>
 
-          <M.IconButton size="small">
+          <M.IconButton size="small" onClick={handleIncreaseQuantity}>
             <AddOutlinedIcon />
           </M.IconButton>
         </S.Quantity>
 
         <M.Box>
           <M.Typography component="span" fontSize="1.25rem">
-            ${totalPrice}
+            {formatPrice(totalPrice)}
           </M.Typography>
         </M.Box>
 
         <M.Box>
-          <M.IconButton edge="start" color="inherit">
+          <M.IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleRemoveFromCart}
+          >
             <DeleteForeverOutlinedIcon fontSize="large" />
           </M.IconButton>
         </M.Box>
