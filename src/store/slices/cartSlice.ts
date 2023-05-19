@@ -113,10 +113,18 @@ const cartSlice = createSlice({
 
       state.totalCost = calculateTotalCost(state.subtotal, state.discount);
     },
+    resetCart: (state) => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  resetCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
