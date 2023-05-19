@@ -59,3 +59,13 @@ export const Navigation = styled(M.Box)`
     }
   }
 `;
+
+export const Drawer = styled(M.Drawer)`
+  .MuiBox-root {
+    width: 250px;
+  }
+
+  .MuiListItem-root {
+    padding: 0;
+  }
+`;
