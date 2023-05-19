@@ -26,7 +26,14 @@ const Footer = () => {
     <S.Wrapper component="footer">
       <M.Container>
         <S.Section order={2}>
-          <Image priority src={logoFooter} width={240} alt="booksellz logo" />
+          <Image
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+            src={logoFooter}
+            width={240}
+            alt="booksellz logo"
+            quality={100}
+          />
 
           <S.SocialMedia>
             <StyledLink href="#">

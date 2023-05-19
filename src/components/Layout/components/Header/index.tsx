@@ -43,7 +43,14 @@ const Header = () => {
       <M.Container>
         <S.Toolbar>
           <Link href="/">
-            <Image priority src={logo} width={200} alt="booksellz logo" />
+            <Image
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+              src={logo}
+              width={200}
+              alt="booksellz logo"
+              quality={100}
+            />
           </Link>
 
           <S.SearchForm onSubmit={handleSubmit}>

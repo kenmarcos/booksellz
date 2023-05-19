@@ -51,6 +51,7 @@ const BookCard = ({ isbn13, image, title, price }: BookCardProps) => {
             height="180"
             image={image}
             title={title}
+            loading="lazy"
           />
           <M.Divider />
 

@@ -41,6 +41,7 @@ const CartItem = ({ cartItem }: CartItemProps) => {
         sx={{ width: 120 }}
         image={cartItem.book.image}
         alt={cartItem.book.title}
+        loading="lazy"
       />
 
       <S.Content>

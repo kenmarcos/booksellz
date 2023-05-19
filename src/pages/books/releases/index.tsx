@@ -17,7 +17,13 @@ const Releases = ({ bookReleases }: ReleaseProps) => {
   return (
     <S.Wrapper>
       <S.Banner>
-        <Image src={bannerReleases} alt="banner releases" />
+        <Image
+          src={bannerReleases}
+          alt="banner releases"
+          quality={100}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+        />
       </S.Banner>
 
       <M.Box>

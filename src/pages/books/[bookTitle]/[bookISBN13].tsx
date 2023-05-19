@@ -64,6 +64,9 @@ const BookDetails = ({ bookDetails }: BookDetailsProps) => {
           height={800}
           quality={100}
           alt="book cover"
+          quality={100}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
         />
       </S.ImageSection>
 
