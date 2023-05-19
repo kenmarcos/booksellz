@@ -24,7 +24,7 @@
     <img src="/public/images/home.png" width=800/>
     <br/>
     <br/>
-    <a href="http://marcos-kuribayashi.vercel.app/">
+    <a href="https://booksellz.vercel.app/">
         <img src="https://img.shields.io/badge/demo-view%20app-blue?style=for-the-badge" alt="badge-usage" >
     </a>
 </div>
@@ -115,4 +115,4 @@ Marcos Kenji Kuribayashi
 
 ---
 
-Desenvolvido por Marcos Kenji Kuribayashi 😉
+Developed by Marcos Kenji Kuribayashi 😉
