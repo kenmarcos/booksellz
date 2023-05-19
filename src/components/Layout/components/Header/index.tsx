@@ -12,10 +12,13 @@ import logo from "/public/logo.svg";
 import * as S from "./styles";
 import StyledLink from "../../../StyledLink";
 import { FormEvent, useRef } from "react";
+import { useAppSelector } from "@/store/hooks";
 
 const Header = () => {
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const cart = useAppSelector((store) => store.cart);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,7 +64,9 @@ const Header = () => {
             </StyledLink>
 
             <StyledLink href="/cart" color="secondary">
-              <ShoppingCartOutlinedIcon />
+              <M.Badge badgeContent={cart.totalItems} color="secondary">
+                <ShoppingCartOutlinedIcon />
+              </M.Badge>
               Cart
             </StyledLink>
 
