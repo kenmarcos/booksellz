@@ -28,7 +28,7 @@ const Footer = () => {
         <S.Section order={2}>
           <Image
             placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5OhHgAHcAJ5NURfKwAAAABJRU5ErkJggg=="
             src={logoFooter}
             width={240}
             alt="booksellz logo"
