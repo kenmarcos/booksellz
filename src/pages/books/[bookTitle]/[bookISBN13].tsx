@@ -7,23 +7,59 @@ import * as M from "@mui/material";
 import * as S from "./styles";
 import { api } from "@/services/api";
 import { BookDetails } from "@/types/books";
+import { useAppDispatch } from "@/store/hooks";
+import { addToCart } from "@/store/slices/cartSlice";
+import { CartItem } from "@/types/cart";
 
 interface BookDetailsProps {
   bookDetails: BookDetails;
 }
 
 const BookDetails = ({ bookDetails }: BookDetailsProps) => {
+  const {
+    image,
+    isbn13,
+    price,
+    title,
+    subtitle,
+    desc,
+    authors,
+    publisher,
+    year,
+  } = bookDetails;
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
+  const item: CartItem = {
+    book: {
+      image,
+      isbn13,
+      price,
+      title,
+    },
+    quantity: 1,
+    totalPrice: Number(price.slice(1)),
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
+  };
+
+  const handleBuy = () => {
+    dispatch(addToCart(item));
+
+    router.push("/cart");
+  };
+
   return (
     <S.Wrapper>
       <S.ImageSection>
         <Image
-          src={bookDetails.image}
+          src={image}
           width={800}
           height={800}
           quality={100}
@@ -32,49 +68,59 @@ const BookDetails = ({ bookDetails }: BookDetailsProps) => {
       </S.ImageSection>
 
       <S.InfoSection>
-        <M.Typography variant="h2">{bookDetails.title}</M.Typography>
+        <M.Typography variant="h2">{title}</M.Typography>
 
-        <M.Typography variant="h3">{bookDetails.subtitle}</M.Typography>
+        <M.Typography variant="h3">{subtitle}</M.Typography>
 
         <S.Information>
           <M.Box>
             <M.Typography variant="h4">Description</M.Typography>
-            <M.Typography>{bookDetails.desc}</M.Typography>
+            <M.Typography>{desc}</M.Typography>
           </M.Box>
         </S.Information>
 
         <S.Information>
           <M.Box>
             <M.Typography variant="h4">Author</M.Typography>
-            <M.Typography>{bookDetails.authors}</M.Typography>
+            <M.Typography>{authors}</M.Typography>
           </M.Box>
 
           <M.Box>
             <M.Typography variant="h4">ISBN-13</M.Typography>
-            <M.Typography>{bookDetails.isbn13}</M.Typography>
+            <M.Typography>{isbn13}</M.Typography>
           </M.Box>
         </S.Information>
 
         <S.Information>
           <M.Box>
             <M.Typography variant="h4">Publisher</M.Typography>
-            <M.Typography>{bookDetails.publisher}</M.Typography>
+            <M.Typography>{publisher}</M.Typography>
           </M.Box>
 
           <M.Box>
             <M.Typography variant="h4">Year</M.Typography>
-            <M.Typography>{bookDetails.year}</M.Typography>
+            <M.Typography>{year}</M.Typography>
           </M.Box>
         </S.Information>
 
-        <M.Typography variant="h2">{bookDetails.price}</M.Typography>
+        <M.Typography variant="h2">{price}</M.Typography>
 
         <S.ActionArea>
-          <M.Button fullWidth size="large" variant="contained">
+          <M.Button
+            fullWidth
+            size="large"
+            variant="contained"
+            onClick={handleBuy}
+          >
             Buy Now
           </M.Button>
 
-          <M.Button fullWidth size="large" variant="outlined">
+          <M.Button
+            fullWidth
+            size="large"
+            variant="outlined"
+            onClick={handleAddToCart}
+          >
             Add To Cart
           </M.Button>
         </S.ActionArea>

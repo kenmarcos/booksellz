@@ -49,7 +49,11 @@ const CartItem = ({ cartItem }: CartItemProps) => {
         </M.Box>
 
         <S.Quantity>
-          <M.IconButton size="small" onClick={handleDecreaseQuantity}>
+          <M.IconButton
+            size="small"
+            onClick={handleDecreaseQuantity}
+            disabled={cartItem.quantity === 1}
+          >
             <RemoveOutlinedIcon />
           </M.IconButton>
 
