@@ -9,12 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "axios": "^1.4.0",
     "next": "13.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-redux": "^8.0.5",
+    "styled-components": "^6.0.0-rc.1",
+    "swiper": "^9.3.1",
     "typescript": "5.0.4"
+  },
+  "resolutions": {
+    "styled-components": "^6"
+  },
+  "devDependencies": {
+    "@types/react-redux": "^7.1.25"
   }
 }
