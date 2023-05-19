@@ -78,6 +78,9 @@ const Search = ({ searchResultData }: SearchProps) => {
               boundaryCount={0}
               showFirstButton
               showLastButton
+              color="primary"
+              variant="text"
+              size="large"
             />
           </>
         )}
