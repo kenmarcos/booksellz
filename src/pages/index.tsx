@@ -40,16 +40,34 @@ export default function Home({ bookReleases }: HomeProps) {
           }}
         >
           <SwiperSlide>
-            <Image src={bannerDiscount} alt="banner discount" />
+            <Image
+              src={bannerDiscount}
+              alt="banner discount"
+              quality={100}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+            />
           </SwiperSlide>
           <SwiperSlide>
             <Link href="/books/releases">
-              <Image src={bannerReleases} alt="banner releases" />
+              <Image
+                src={bannerReleases}
+                alt="banner releases"
+                quality={100}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+              />
             </Link>
           </SwiperSlide>
           <SwiperSlide>
             <Link href="/books/Data-Visualization-with-Python-and-JavaScript-2nd-Edition/9781098111878">
-              <Image src={bannerBook} alt="banner book" />
+              <Image
+                src={bannerBook}
+                alt="banner book"
+                quality={100}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOUlJauBwABdADQDG2nxgAAAABJRU5ErkJggg=="
+              />
             </Link>
           </SwiperSlide>
         </Swiper>
