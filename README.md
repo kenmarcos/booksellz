@@ -1,7 +1,7 @@
 <!-- CABEÇALHO -->
 <div id="readme-top" align="center">
     <h1>
-        <img width=300 src="/public/logo.svg" alt="project-name" />
+        <img style="border-radius: 2%" width=300 src="/public/logo.svg" alt="project-name" />
     </h1>
     <p>
         Your Online Bookstore!
@@ -24,7 +24,7 @@
     <img src="/public/images/home.png" width=800/>
     <br/>
     <br/>
-    <a href="http://marcos-kuribayashi.vercel.app/">
+    <a href="https://booksellz.vercel.app/">
         <img src="https://img.shields.io/badge/demo-view%20app-blue?style=for-the-badge" alt="badge-usage" >
     </a>
 </div>
@@ -63,7 +63,7 @@ Our user-friendly interface allows you to easily explore, discover, and purchase
 - Open the terminal and clone the repository:
 
 ```Bash
-$ git clone git@github.com:<your_user>/<booksellz>.git
+$ git clone git@github.com:<your_user>/booksellz.git
 ```
 
 - Navigate to the project directory:
@@ -115,4 +115,4 @@ Marcos Kenji Kuribayashi
 
 ---
 
-Desenvolvido por Marcos Kenji Kuribayashi 😉
+Developed by Marcos Kenji Kuribayashi 😉
