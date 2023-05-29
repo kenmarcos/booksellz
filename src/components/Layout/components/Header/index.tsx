@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { FormEvent, useRef, useState } from "react";
 
 import * as M from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -12,31 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import logo from "/public/logo.svg";
 import * as S from "./styles";
 import StyledLink from "../../../StyledLink";
-import { useAppSelector } from "@/store/hooks";
+import useHeader from "./useHeader";
 
 const Header = () => {
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
-
-  const cart = useAppSelector((store) => store.cart);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const searchValue = searchInputRef.current?.value;
-
-    if (searchValue) {
-      router.push({
-        pathname: "/books/search",
-        query: { keyword: searchValue },
-      });
-
-      const formElement = event.target as HTMLFormElement;
-      formElement.reset();
-      searchInputRef.current.blur();
-    }
-  };
+  const { open, setOpen, searchInputRef, cart, handleSubmit } = useHeader();
 
   return (
     <M.AppBar>
