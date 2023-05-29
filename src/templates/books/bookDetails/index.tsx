@@ -1,13 +1,10 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 import * as M from "@mui/material";
 
 import * as S from "./styles";
 import { BookDetails } from "@/types/books";
-import { useAppDispatch } from "@/store/hooks";
-import { addToCart } from "@/store/slices/cartSlice";
-import { CartItem } from "@/types/cart";
+import useBookDetails from "./useBookDetails";
 
 export interface BookDetailsTemplateProps {
   bookDetails: BookDetails;
@@ -25,33 +22,13 @@ const BookDetailsTemplate = ({ bookDetails }: BookDetailsTemplateProps) => {
     publisher,
     year,
   } = bookDetails;
-  const router = useRouter();
-  const dispatch = useAppDispatch();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
-  const item: CartItem = {
-    book: {
-      image,
-      isbn13,
-      price,
-      title,
-    },
-    quantity: 1,
-    totalPrice: Number(price.slice(1)),
-  };
-
-  const handleAddToCart = () => {
-    dispatch(addToCart(item));
-  };
-
-  const handleBuy = () => {
-    dispatch(addToCart(item));
-
-    router.push("/cart");
-  };
+  const { handleAddToCart, handleBuy } = useBookDetails({
+    title,
+    image,
+    isbn13,
+    price,
+  });
 
   return (
     <S.Wrapper>

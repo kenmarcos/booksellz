@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import * as M from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -7,32 +6,12 @@ import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/Production
 
 import * as S from "./styles";
 import CartItem from "@/components/CartItem";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { formatPrice } from "@/utils/formatting";
 import NoContentMessage from "@/components/NoContentMessage";
-import { resetCart } from "@/store/slices/cartSlice";
+import useCart from "./useCart";
 
 const CartTemplate = () => {
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const cart = useAppSelector((store) => store.cart);
-
-  let tooltipText = "";
-  if (cart.distinctItems === 2) {
-    tooltipText = "5% OFF";
-  } else if (cart.distinctItems === 3) {
-    tooltipText = "10% OFF";
-  } else if (cart.distinctItems === 4) {
-    tooltipText = "20% OFF";
-  } else if (cart.distinctItems >= 5) {
-    tooltipText = "25% OFF";
-  }
-
-  const handleCheckout = () => {
-    dispatch(resetCart());
-
-    router.push("/order/confirmation");
-  };
+  const { cart, tooltipText, handleCheckout } = useCart();
 
   return (
     <S.Wrapper>
