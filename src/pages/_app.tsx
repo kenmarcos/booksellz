@@ -9,6 +9,7 @@ import GlobalStyle from "@/styles/global";
 import muiTheme from "@/styles/muiTheme";
 import Layout from "@/components/Layout";
 import store from "@/store";
+import { SnackbarProvider } from "notistack";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,10 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <StyledThemeProvider theme={muiTheme}>
           <MuiThemeProvider theme={muiTheme}>
-            <GlobalStyle />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <SnackbarProvider>
+              <GlobalStyle />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </SnackbarProvider>
           </MuiThemeProvider>
         </StyledThemeProvider>
       </Provider>
