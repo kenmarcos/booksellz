@@ -4,12 +4,14 @@ import { useAppDispatch } from "@/store/hooks";
 import { addToCart } from "@/store/slices/cartSlice";
 import { CartItem } from "@/types/cart";
 import { BookCardProps } from ".";
+import { useSnackbar } from "notistack";
 
 type UseBookCardProps = BookCardProps;
 
 const useBookCard = ({ isbn13, image, title, price }: UseBookCardProps) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const titleSlug = title.replace(/,/g, "").replace(/ /g, "-");
 
@@ -26,6 +28,10 @@ const useBookCard = ({ isbn13, image, title, price }: UseBookCardProps) => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(item));
+
+    enqueueSnackbar("Book successfully added to your cart!", {
+      variant: "success",
+    });
   };
 
   const handleBuy = () => {

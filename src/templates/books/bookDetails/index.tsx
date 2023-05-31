@@ -2,8 +2,8 @@ import Image from "next/image";
 
 import * as M from "@mui/material";
 
-import * as S from "./styles";
 import { BookDetails } from "@/types/books";
+import * as S from "./styles";
 import useBookDetails from "./useBookDetails";
 
 export interface BookDetailsTemplateProps {
