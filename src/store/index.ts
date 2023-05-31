@@ -18,11 +18,11 @@ const persistConfig = {
   storage,
 };
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   cart: cartSlice,
 });
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -35,6 +35,6 @@ export const store = configureStore({
 });
 export const persistor = persistStore(store);
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
 
 export type AppDispatch = typeof store.dispatch;
