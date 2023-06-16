@@ -1,17 +1,23 @@
-export const calculateDiscount = (distinctItems: number, subtotal: number) => {
-  let discount = 0;
+const discounts = new Map([
+  [2, -0.05],
+  [3, -0.1],
+  [4, -0.2],
+  [5, -0.25],
+]);
 
-  if (distinctItems === 2) {
-    discount = -0.05 * subtotal;
-  } else if (distinctItems === 3) {
-    discount = -0.1 * subtotal;
-  } else if (distinctItems === 4) {
-    discount = -0.2 * subtotal;
-  } else if (distinctItems >= 5) {
-    discount = -0.25 * subtotal;
+const MIN_ITEMS_QUANTITY = 2;
+const MAX_ITEMS_QUANTITY = 5;
+
+export const calculateDiscount = (distinctItems: number, subtotal: number) => {
+  if (distinctItems < MIN_ITEMS_QUANTITY) {
+    return 0;
   }
 
-  return discount;
+  if (distinctItems > MAX_ITEMS_QUANTITY) {
+    return discounts.get(MAX_ITEMS_QUANTITY)! * subtotal;
+  }
+
+  return discounts.get(distinctItems)! * subtotal;
 };
 
 export const calculateTotalCost = (subtotal: number, discount: number) => {
