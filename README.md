@@ -31,6 +31,8 @@
 
 <br/>
 
+>This Project was developed for the [technical test stage](https://gitlab.com/autbank/desafio-mobile) of the React Junior Frontend Developer selection process for Autbank.
+
 BookSellz is an online bookstore that aims to provide book lovers with a seamless and enjoyable shopping experience.
 
 Our user-friendly interface allows you to easily explore, discover, and purchase your favorite books from the comfort of your home.
